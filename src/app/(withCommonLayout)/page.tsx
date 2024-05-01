@@ -1,9 +1,9 @@
-import { Button } from "antd";
+import Columns from "@/components/ui/Columns";
 
 export default function Home() {
   return (
     <main>
-      <Button type="primary">Button</Button>
+      <Columns />
     </main>
   );
 }

@@ -1,16 +1,24 @@
-const Task = ({ status }: { status: string }) => {
+export type TTaskProps = {
+  _id: string;
+  title: string;
+  status: string;
+  description: string;
+};
+const Task = ({ data }: { data: TTaskProps }) => {
+  const { title, status, description, _id } = data;
+  // console.log(data);
   return (
     <div className="bg-white rounded-lg shadow-md p-4 mb-4">
-      <h3 className="text-lg font-semibold mb-2"> title</h3>
+      <h3 className="text-lg font-semibold mb-2"> {title}</h3>
 
-      <p className="text-sm text-gray-700 mb-4"> description</p>
+      <p className="text-sm text-gray-700 mb-4"> {description}</p>
       <div className="flex items-center justify-between">
         <div className="flex items-center">
           <div
-            className={`w-4 h-4 ${status === "TODO" ? "bg-orange-500" : ""} ${
-              status === "IN_PROGRESS" ? "bg-[#008080]" : ""
+            className={`w-4 h-4 ${status === "Todo" ? "bg-orange-500" : ""} ${
+              status === "In Progress" ? "bg-[#008080]" : ""
             }
-            ${status === "DONE" ? "bg-blue-500" : ""}
+            ${status === "Done" ? "bg-blue-500" : ""}
              rounded-full mr-2`}
           ></div>
           <p className="text-xs text-gray-600">{status}</p>

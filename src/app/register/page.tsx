@@ -4,13 +4,6 @@ import DIYInput from "@/components/forms/DIYInput";
 import { userRegister } from "@/service/actions/userRegister";
 import { Button, Flex, Row } from "antd";
 import { FieldValues } from "react-hook-form";
-import { z } from "zod";
-
-export const userValidationSchema = z.object({
-  name: z.string().min(1, "please enter your name"),
-  email: z.string().email("please enter your email"),
-  password: z.string().min(6, "password must be at least 6 characters"),
-});
 
 const RegisterPage = () => {
   const handleRegister = async (values: FieldValues) => {

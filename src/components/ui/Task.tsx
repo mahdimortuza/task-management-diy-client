@@ -1,12 +1,14 @@
+import Link from "next/link";
+
 export type TTaskProps = {
-  _id: string;
+  id: string;
   title: string;
   status: string;
   description: string;
 };
 const Task = ({ data }: { data: TTaskProps }) => {
-  const { title, status, description, _id } = data;
-  // console.log(data);
+  const { title, status, description, id: taskId } = data;
+  // console.log(taskId);
   return (
     <div className="bg-white rounded-lg shadow-md p-4 mb-4">
       <h3 className="text-lg font-semibold mb-2"> {title}</h3>
@@ -29,9 +31,11 @@ const Task = ({ data }: { data: TTaskProps }) => {
           <button className="border px-2 py-1 rounded text-xs text-gray-500 hover:text-gray-700">
             Edit
           </button>
-          <button className="border px-2 py-1 rounded text-xs text-gray-500 hover:text-gray-700">
-            View
-          </button>
+          <Link href={`/${taskId}`}>
+            <button className="border px-2 py-1 rounded text-xs text-gray-500 hover:text-gray-700">
+              View
+            </button>
+          </Link>
         </div>
         <button className="border px-2 py-1 rounded text-xs text-red-500 hover:text-red-700">
           Delete

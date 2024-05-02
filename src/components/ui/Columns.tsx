@@ -1,22 +1,24 @@
 "use client";
-import { useTasks } from "@/apis/common/tasks/tasks";
+import { useGetAllTasks } from "@/apis/common/tasks/tasks.hooks.ts";
 import { Flex, Row } from "antd";
 import SingleColumn from "./SingleColumn";
 import { TTaskProps } from "./Task";
 
 const Columns = () => {
-  const { data, isLoading, isError } = useTasks();
+  const { data: taskData, isLoading, isError } = useGetAllTasks();
+  // console.log(taskData);
+
   if (isLoading) {
     return <p>Loading...</p>;
   }
   if (isError) {
     return <p>Something went wrong.</p>;
   }
-  const todo = data?.data.filter((task: TTaskProps) => task.status === "Todo");
-  const inProgress = data?.data.filter(
+  const todo = taskData.filter((task: TTaskProps) => task.status === "Todo");
+  const inProgress = taskData.filter(
     (task: TTaskProps) => task.status === "In Progress"
   );
-  const done = data?.data.filter((task: TTaskProps) => task.status === "Done");
+  const done = taskData.filter((task: TTaskProps) => task.status === "Done");
 
   return (
     <Row justify="center">
